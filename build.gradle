@@ -9,6 +9,11 @@ group = 'ua.vvarlan'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext {
+    springCloudVersion = '2.2.1.RELEASE'
+    awsSdkVerion = '1.12.42'
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -29,6 +34,19 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.spockframework:spock-spring:2.0-M5-groovy-3.0'
     testImplementation 'org.spockframework:spock-core:2.0-M5-groovy-3.0'
+    testImplementation 'org.testcontainers:testcontainers:1.16.0'
+    testImplementation 'org.testcontainers:localstack:1.16.0'
+
+
+    testImplementation platform("com.amazonaws:aws-java-sdk-bom:${awsSdkVerion}")
+    testImplementation "org.springframework.cloud:spring-cloud-starter-aws:${springCloudVersion}"
+    testImplementation "org.springframework.cloud:spring-cloud-aws-messaging:${springCloudVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-actuator"
+    testImplementation "org.springframework.boot:spring-boot-starter-validation"
+    testImplementation "com.amazonaws:aws-java-sdk-secretsmanager"
+    testImplementation "com.ixortalk:ixortalk.aws.cognito.jwt.security.filter:0.0.7"
+    testImplementation 'org.testcontainers:testcontainers:1.16.0'
+    testImplementation 'org.testcontainers:localstack:1.16.0'
 }
 
 test {
