@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Setup
           command: |
-            docker run -d -p 5431:5432 -e POSTGRES_DB=wb_test -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=test_pass
+            docker run -d -p 5431:5432 -e POSTGRES_DB=wb_test -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=test_pass postgres:11.7
             sleep 5
       - run: gradle test
 
